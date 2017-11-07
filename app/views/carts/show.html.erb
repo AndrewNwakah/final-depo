@@ -14,18 +14,25 @@
   
 <% @cart.line_items.each do |item| %>  
 <tr>
-  <td><%= item.product.title %></td>
-  <td><%= item.product.price %></td>
+  <td><%= item.quantity %> &times; <%= item.product.title %></td>
+  <td><%= number_to_currency(item.total_price) %></td>
 </tr>
 <% end %>
+<td colspan="2">Total Order Value </td><td><%= number_to_currency(@cart.total_price) %></td>
 
 <tr>
 <td>
 <%= link_to 'Edit', edit_cart_path(@cart) ,class:"w3-button w3-light-gray w3-border" %> 
 </td>
+
 <td>
 <%= link_to 'Back', carts_path , class:"w3-button w3-light-gray w3-border" %>
 </td>
+
+<td>
+<%= button_to 'Empty cart', @cart, method: :delete, data: { confirm: 'Are you sure?' } %>
+</td>
+<td><%= link_to 'Keep Shopping', store_index_url , class:"w3-button w3-light-gray" %></td>
 </tr>
 </tbody>
 </table>
