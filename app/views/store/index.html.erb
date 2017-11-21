@@ -1,7 +1,6 @@
 <h1>Store</h1>
 
 <p id="notice" class="w3-panel"><%= notice %></p>
-
 <h1>Items</h1>
 
 
@@ -22,9 +21,10 @@
         <td><%= strip_tags(product.description) %></td>
         <td><%= image_tag(product.image_url) %></td>
         <td><%= number_to_currency(product.price) %></td>
-        <td><%= button_to 'Add to Cart', line_items_path(product_id: product), class:"w3-button w3-gray" %></td>
+        <td><%= button_to 'Add to Cart', line_items_path(product_id: product), class:"w3-button w3-blue" %></td>
       </tr>
     <% end %>
+    <%= link_to 'Show My Cart', cart_path(@cart) , class:"w3-button w3-blue w3-border" %>
   </tbody>
 </table>
 
